@@ -1,0 +1,13 @@
+.card-top {
+    height: 35vh;
+}
+
+.card-bottom {
+    height: 50vh;
+}
+
+#chart-wrapper {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}

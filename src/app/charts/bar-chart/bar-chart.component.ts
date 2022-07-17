@@ -18,7 +18,7 @@ export class BarChartComponent implements OnInit {
 
   public barChartData: any[] = SAMPLE_BARCHART_DATA;
   public barChartLabels: string[] = SAMPLE_BARCHART_LABELS;
-  public barChartLegend = false;
+  public barChartLegend = true;
   public barChartType = 'bar';
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
