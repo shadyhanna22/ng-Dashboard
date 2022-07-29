@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { pipe } from 'rxjs';
+import { SalesDataService } from 'src/app/services/sales-data.service';
 import { Order } from "../../shared/order";
 @Component({
   selector: 'app-section-orders',
@@ -7,24 +9,47 @@ import { Order } from "../../shared/order";
 })
 export class SectionOrdersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _salesDate: SalesDataService) { }
 
-  orders: Order[] = [
-    {id: 1, 
-      customer:{id: 1,name:'customer1',
-      email:'customer1@gmai.com',provence:'ON'},
-      total: 2,placed: new Date(2022,5,14),fulfilled:new Date(2022,6,12)},
-    {id: 2, 
-      customer:{id: 2,name:'customer2',
-      email:'customer2@gmai.com',provence:'BC'},
-      total: 7,placed: new Date(2022,5,14),fulfilled:new Date(2022,6,12)},
-    {id: 3, 
-      customer:{id: 3,name:'customer3',
-      email:'customer3@gmai.com',provence:'MB'},
-      total: 5,placed: new Date(2022,5,14),fulfilled:new Date(2022,6,12)}
-  ];
+  orders: Order[];
+  total = 0;
+  page = 1;
+  limit = 10;
+  loading = false;
+
 
   ngOnInit(): void {
+    this.getOrders();
   }
 
+  getOrders(): void {
+    this._salesDate.getOrders(this.page, this.limit)
+      .subscribe(res => {
+        if (res != null){
+          console.log('Result from getOrders: ', res);
+          // console.log(res["page"]["data"][0])
+          this.orders = res['page']['data'];
+          this.total = res['page'].total;
+          this.loading = false;
+        } else {
+          // Handle Null
+        }
+      });
+  }
+
+  goToPrevious(): void{
+    // console.log('Previous Button Clicked!')
+    this.page--;
+    this.getOrders();
+  }
+  goToNext(): void{
+    // console.log('Next Button Clicked!')
+    this.page++;
+    this.getOrders();
+  }
+
+  goToPage(n: number): void {
+    this.page = n;
+    this.getOrders();
+  }
 }
