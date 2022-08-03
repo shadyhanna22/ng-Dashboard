@@ -14,15 +14,15 @@
                     <h5>Orders by Customers</h5>
                 </div>
                 <div class="card-body card-body-theme">
-                    <app-pie-chart></app-pie-chart>
+                    <app-pie-chart *ngIf="salesDataByCustomer" [inputData]="salesDataByCustomer" [limit]="3"></app-pie-chart>
                 </div>
             </div>
             <div class="card mb-3 shadow card-theme">
                 <div class="card-header card-header-theme">
-                    <h5>Orders by State</h5>
+                    <h5>Orders by Province</h5>
                 </div>
                 <div class="card-body card-body-theme">
-                    <app-pie-chart></app-pie-chart>
+                    <app-pie-chart *ngIf="salesDataByProvince" [inputData]="salesDataByProvince" [limit]="5"></app-pie-chart>
                 </div>
             </div>
         </div>

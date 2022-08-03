@@ -34,7 +34,7 @@ export class SalesDataService {
       .pipe(map(res => res || []));
   }
 
-  getOrdersByState() {
+  getOrdersByProvince() {
     return this.http.get('https://localhost:7242/api/order/ByProvince')
       .pipe(map(res => res || []));
   }

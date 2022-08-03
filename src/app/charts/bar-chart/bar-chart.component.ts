@@ -41,8 +41,8 @@ export class BarChartComponent implements OnInit {
             this.ChartData.push(e.total);
             this.barChartLabels.push(e.placed);
         });
-        console.log(this.barChartLabels);
-        console.log(this.barChartData);
+        // console.log(this.barChartLabels);
+        // console.log(this.barChartData);
 
         this.barChartLabels = this.barChartLabels.reverse();
         this.barChartData = [{'data':this.ChartData, 'label': 'Sales'}]
