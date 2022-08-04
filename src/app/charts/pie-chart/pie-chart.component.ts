@@ -47,12 +47,11 @@ export class PieChartComponent implements OnInit {
   }
 
   parsData(res: any, limit?: number) {
-    console.log('res',res);
     const allData = res.slice(0,limit);
     this.chartData = allData.map(x => x['total']);
     this.chartLabels = allData.map(x => x['name']||x['province']);
-    console.log('data: ', this.chartData);
-    console.log('labels: ', this.chartLabels);
+    // console.log('data: ', this.chartData);
+    // console.log('labels: ', this.chartLabels);
     
   }
 
